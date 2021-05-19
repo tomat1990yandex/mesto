@@ -1,0 +1,31 @@
+.footer {
+  display: grid;
+  align-items: center;
+  padding: 66px 0 60px;
+  grid-auto-flow: column;
+  justify-content: start;
+  max-width: 318px;
+  margin: 0 auto 0 200px;
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    max-width: 928px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    max-width: 720px;
+    padding: 0 1.5em 1.5em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    max-width: 200px;
+    grid-auto-flow: row;
+    padding: 0 1em 1.5em;
+    margin: 0;
+  }
+}

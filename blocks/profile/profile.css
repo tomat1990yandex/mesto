@@ -1,0 +1,9 @@
+.profile {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  padding: 0 0 50px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
