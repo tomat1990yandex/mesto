@@ -1,0 +1,10 @@
+.profile__box_title {
+  display: flex;
+  margin: 0 0 16px;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__box_title {
+    margin: 0 0 14px;
+  }
+}

@@ -1,0 +1,21 @@
+.button__edit {
+  background-image: url(../../../images/edit.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+  border: none;
+  transition: opacity .3s ease-in;
+  align-self: center;
+  margin: 0 0 0 18px;
+}
+
+@media screen and (max-width: 320px) {
+  .button__edit {
+    margin: 0 0 0 10px;
+    width: 18px;
+    height: 18px;
+  }
+}
