@@ -20,25 +20,25 @@
         <div class="profile__info">
           <div class="profile__box_title">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="button__edit"></button>
+            <button type="button" class="button__edit" id="ButtonEdit"></button>
           </div>
           <p class="profile__profession">Исследователь океана</p>
         </div>
       </div>
-      <button class="button__add"></button>
+      <button type="button" class="button__add" id="ButtonAdd"></button>
     </section>
 
     <section class="elements">
       <card class="element">
-        <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачевск">
-          <div class="element__group">
-            <h2 class="element__title">Карачевск</h2>
-            <button class="button__like"></button>
+        <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачевск">
+        <div class="element__group">
+          <h2 class="element__title">Карачевск</h2>
+          <button class="button__like"></button>
         </div>
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Гора Эльбрус">
+        <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Гора Эльбрус">
         <div class="element__group">
           <h2 class="element__title">Гора Эльбрус</h2>
           <button class="button__like"></button>
@@ -46,7 +46,7 @@
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Домбай">
+        <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Домбай">
         <div class="element__group">
           <h2 class="element__title">Домбай</h2>
           <button class="button__like"></button>
@@ -54,7 +54,7 @@
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Гора Эльбрус">
+        <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Гора Эльбрус">
         <div class="element__group">
           <h2 class="element__title">Гора Эльбрус</h2>
           <button class="button__like"></button>
@@ -62,7 +62,7 @@
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Домбай">
+        <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Домбай">
         <div class="element__group">
           <h2 class="element__title">Домбай</h2>
           <button class="button__like"></button>
@@ -70,7 +70,7 @@
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачевск">
+        <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачевск">
         <div class="element__group">
           <h2 class="element__title">Карачевск</h2>
           <button class="button__like"></button>
@@ -81,6 +81,18 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021. Дмитрий Орлов</p>
   </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <div class="popup__title">Редактировать профиль</div>
+      <form action="#" class="popup_form" method="get" name="profile__info_edit">
+        <input type="text" class="popup__input" id="popupName" name="popup__name">
+        <input type="text" class="popup__input" id="popupProfession" name="popup__profession">
+        <button type="submit" class="button__save">Сохранить</button>
+      </form>
+      <button type="button" class="button__close" id="ButtonClose"></button>
+    </div>
+  </div>
 </div>
+<script src="./script.js"></script>
 </body>
 </html>
