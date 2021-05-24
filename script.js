@@ -19,6 +19,8 @@ let popupName = document.querySelector('#popupName')
 // поле ввода профессии
 let popupProfession = document.querySelector('#popupProfession')
 
+// блок формы
+let form = document.querySelector('.popup__form')
 
 
 // открытие окна popup для редактирования профиля
@@ -34,6 +36,14 @@ function close() {
   popup.classList.remove('popup_opened')
 }
 
-//
+// перенос имени и профессии с popup в основную страницу
+function SaveButton(save) {
+  save.preventDefault()
+  profileName.textContent = popupName.value
+  profileProfession.textContent = popupProfession.value
+}
+
+// события при действиях
 ButtonPopup.addEventListener('click', open)
 ButtonClose.addEventListener('click', close)
+form.addEventListener('submit', SaveButton)
