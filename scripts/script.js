@@ -37,13 +37,14 @@ function close() {
 }
 
 // перенос имени и профессии с popup в основную страницу
-function SaveButton(save) {
+function formSubmitHandler (save) {
   save.preventDefault()
   profileName.textContent = popupName.value
   profileProfession.textContent = popupProfession.value
+  close()
 }
 
 // события при действиях
 ButtonPopup.addEventListener('click', open)
 ButtonClose.addEventListener('click', close)
-form.addEventListener('submit', SaveButton)
+form.addEventListener('submit', formSubmitHandler )

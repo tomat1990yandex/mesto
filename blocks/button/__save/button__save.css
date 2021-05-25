@@ -4,6 +4,12 @@
   width: 358px;
   min-height: 50px;
   margin: 38px 36px 37px;
+  transition: all .2s linear;
+}
+
+.button__save:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {

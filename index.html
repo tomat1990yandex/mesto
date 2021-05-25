@@ -16,13 +16,13 @@
   <main class="content">
     <section class="profile">
       <div class="profile__box">
-        <img class="avatar" src="./images/Photo4_s.r.l._664772.jpg" alt="Аватар профиля">
+        <img class="avatar" src="./images/varlamov.jpg" alt="Аватар профиля">
         <div class="profile__info">
           <div class="profile__box_title">
-            <h1 class="profile__name">Ken Block</h1>
+            <h1 class="profile__name">Илья Варламов</h1>
             <button type="button" class="button__edit" id="ButtonEdit"></button>
           </div>
-          <p class="profile__profession">USA Racer</p>
+          <p class="profile__profession">Блогер, урбанист, путешественник</p>
         </div>
       </div>
       <button type="button" class="button__add" id="ButtonAdd"></button>
@@ -30,60 +30,62 @@
 
     <section class="elements">
       <card class="element">
-        <img class="element__image" src="./images/bmw.jpg" alt="BMW">
+        <img class="element__image" src="./images/ekb.png" alt="Екатеринбург">
         <div class="element__group">
-          <h2 class="element__title">BMW</h2>
-          <button class="button__like"></button>
+          <h2 class="element__title">ЕкатеринбургЕкатеринбургЕкатеринбург</h2>
+          <button type="button" class="button__like"></button>
         </div>
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/mercedes.jpg" alt="Mercedes">
+        <img class="element__image" src="./images/ufa.png" alt="Уфа">
         <div class="element__group">
-          <h2 class="element__title">Mercedes</h2>
-          <button class="button__like"></button>
+          <h2 class="element__title">Уфа</h2>
+          <button type="button" class="button__like"></button>
         </div>
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/audi.jpg" alt="AUDI">
+        <img class="element__image" src="./images/sochi.png" alt="Сочи">
         <div class="element__group">
-          <h2 class="element__title">AUDI</h2>
-          <button class="button__like"></button>
+          <h2 class="element__title">Сочи</h2>
+          <button type="button" class="button__like"></button>
         </div>
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/subaru.jpg" alt="Subaru">
+        <img class="element__image" src="./images/moscow.png" alt="Москва">
         <div class="element__group">
-          <h2 class="element__title">Subaru</h2>
-          <button class="button__like"></button>
+          <h2 class="element__title">Москва</h2>
+          <button type="button" class="button__like"></button>
         </div>
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/dodge.jpg" alt="Dodge">
+        <img class="element__image" src="./images/irkutsk.png" alt="Иркутск">
         <div class="element__group">
-          <h2 class="element__title">Dodge</h2>
-          <button class="button__like"></button>
+          <h2 class="element__title">Иркутск</h2>
+          <button type="button" class="button__like"></button>
         </div>
       </card>
 
       <card class="element">
-        <img class="element__image" src="./images/lamborghini.jpg" alt="Lamborghini">
+        <img class="element__image" src="./images/kazan.png" alt="Казань">
         <div class="element__group">
-          <h2 class="element__title">Lamborghini</h2>
-          <button class="button__like"></button>
+          <h2 class="element__title">Казань</h2>
+          <button type="button" class="button__like"></button>
         </div>
       </card>
     </section>
   </main>
+
   <footer class="footer">
     <p class="footer__copyright">© 2021. Дмитрий Орлов</p>
   </footer>
-  <div class="popup">
+
+  <section class="popup">
     <div class="popup__container">
-      <div class="popup__title">Редактировать профиль</div>
+      <h2 class="popup__title">Редактировать профиль</h2>
       <form action="#" class="popup__form" method="get" name="profile__info_edit">
         <input type="text" class="popup__input" id="popupName" name="popup__name">
         <input type="text" class="popup__input" id="popupProfession" name="popup__profession">
@@ -91,7 +93,7 @@
       </form>
       <button type="button" class="button__close" id="ButtonClose"></button>
     </div>
-  </div>
+  </section>
 </div>
 <script src="scripts/script.js"></script>
 </body>

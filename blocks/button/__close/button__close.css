@@ -6,8 +6,14 @@
   right: -40px;
   top: -40px;
   border: none;
+  transition: opacity .3s ease-in;
   background-color: transparent;
   background-position: center;
+}
+
+.button__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
