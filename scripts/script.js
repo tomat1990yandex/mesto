@@ -2,10 +2,10 @@
 let popup = document.querySelector('.popup')
 
 // кнопка вызова окна редактирования профиля
-let ButtonPopup = document.querySelector('.button__edit')
+let ButtonPopup = document.querySelector('.profile__edit')
 
 // кнопка закрытие окна редактирования профиля
-let ButtonClose = document.querySelector('.button__close')
+let ButtonClose = document.querySelector('.popup__close')
 
 // поле ввода имени
 let profileName = document.querySelector('.profile__name')
