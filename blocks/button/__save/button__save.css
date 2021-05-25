@@ -5,3 +5,11 @@
   min-height: 50px;
   margin: 38px 36px 37px;
 }
+
+@media screen and (max-width: 320px) {
+  .button__save {
+    margin: 45px 22px 25px;
+    max-width: 238px;
+    min-height: 48px;
+  }
+}
