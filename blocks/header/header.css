@@ -2,15 +2,21 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-height: 74px;
+  padding-bottom: 74px;
   box-sizing: border-box;
   max-width: 880px;
   margin: 0;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
 
+@media screen and (min-width: 321px) and (max-width: 863px){
+  .header {
+    padding: 0 27px 31px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .header {
-    padding: 0 27px;
+    padding: 0 8px 31px;
   }
 }

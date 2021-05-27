@@ -1,34 +1,34 @@
 // окно popup
-let popup = document.querySelector('.popup')
+let popup = document.querySelector('.popup');
 
 // кнопка вызова окна редактирования профиля
-let ButtonPopup = document.querySelector('.profile__edit')
+let ButtonPopup = document.querySelector('.profile__edit');
 
 // кнопка закрытие окна редактирования профиля
-let ButtonClose = document.querySelector('.popup__close')
+let ButtonClose = document.querySelector('.popup__close');
 
 // поле ввода имени
-let profileName = document.querySelector('.profile__name')
+let profileName = document.querySelector('.profile__name');
 
 // поле ввода профессии
-let profileProfession = document.querySelector('.profile__profession')
+let profileProfession = document.querySelector('.profile__profession');
 
 // поле ввода имени
-let popupName = document.querySelector('#popupName')
+let popupName = document.querySelector('#popupName');
 
 // поле ввода профессии
-let popupProfession = document.querySelector('#popupProfession')
+let popupProfession = document.querySelector('#popupProfession');
 
 // блок формы
-let form = document.querySelector('.popup__form')
+let form = document.querySelector('.popup__form');
 
 
 // открытие окна popup для редактирования профиля
 // перенос имени и профессии с основной страницы в popup
 function open() {
-  popup.classList.add('popup_opened')
   popupName.value = profileName.textContent
   popupProfession.value = profileProfession.textContent
+  popup.classList.add('popup_opened')
 }
 
 // закрытие окна popup для редактирования профиля
@@ -45,6 +45,6 @@ function formSubmitHandler(save) {
 }
 
 // события при действиях
-ButtonPopup.addEventListener('click', open)
-ButtonClose.addEventListener('click', close)
-form.addEventListener('submit', formSubmitHandler)
+ButtonPopup.addEventListener('click', open);
+ButtonClose.addEventListener('click', close);
+form.addEventListener('submit', formSubmitHandler);

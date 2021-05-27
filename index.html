@@ -10,13 +10,13 @@
 <body class="root">
 <div class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Лого mesto">
+    <div class="header__logo"></div>
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__box">
-        <img class="avatar" src="./images/varlamov.jpg" alt="Аватар профиля">
+        <img class="profile__avatar" src="./images/varlamov.jpg" alt="Аватар профиля">
         <div class="profile__info">
           <div class="profile__box-title">
             <h1 class="profile__name">Илья Варламов</h1>
@@ -32,7 +32,7 @@
       <article class="element">
         <img class="element__image" src="./images/ekb.png" alt="Екатеринбург">
         <div class="element__group">
-          <h2 class="element__title">ЕкатеринбургЕкатеринбургЕкатеринбург</h2>
+          <h2 class="element__title">Екатеринбург</h2>
           <button type="button" class="element__like"></button>
         </div>
       </article>
@@ -83,17 +83,17 @@
     <p class="footer__copyright">© 2021. Дмитрий Орлов</p>
   </footer>
 
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form action="#" class="popup__form" method="get" name="profile__info_edit">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form action="#" class="popup__form" method="post" name="profileInfoEdit">
         <input type="text" class="popup__input" id="popupName" name="popup__name">
         <input type="text" class="popup__input" id="popupProfession" name="popup__profession">
         <button type="submit" class="popup__save">Сохранить</button>
       </form>
       <button type="button" class="popup__close" id="ButtonClose"></button>
     </div>
-  </section>
+  </div>
 </div>
 <script src="scripts/script.js"></script>
 </body>

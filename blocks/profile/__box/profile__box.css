@@ -2,8 +2,14 @@
   display: flex;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
   .profile__box {
     flex-direction: column;
   }
 }
+
+/*@media screen and (max-width: 320px) {*/
+/*  .profile__box {*/
+/*    flex-direction: column;*/
+/*  }*/
+/*}*/
