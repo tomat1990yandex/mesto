@@ -65,12 +65,13 @@ function renderItems() {
 
 // функция создания карточек по шаблону с использованием значений массива
 function renderItem(element) {
-  const htmlElement = itemTemplate.cloneNode(true);
-  htmlElement.querySelector('.element__title').textContent = element.name;
-  htmlElement.querySelector('.element__image').src = element.link;
-  setEventListeners(htmlElement);
+  const elementAdd = itemTemplate.cloneNode(true);
+  elementAdd.querySelector('.element__title').textContent = element.name;
+  elementAdd.querySelector('.element__image').src = element.link;
+  elementAdd.querySelector('.element__like').addEventListener('click', elementLike);
+  setEventListeners(elementAdd);
 
-  list.appendChild(htmlElement);
+  list.appendChild(elementAdd);
 }
 renderItems();
 
@@ -79,9 +80,19 @@ function handleDelete(evt) {
   evt.target.closest('.element').remove();
 }
 
-function setEventListeners(element1) {
-  element1.querySelector('.element__delete').addEventListener('click', handleDelete);
+function setEventListeners(elementDel) {
+  elementDel.querySelector('.element__delete').addEventListener('click', handleDelete);
+}
 
+// добавление новой карточки
+function handleDuplicate(evt) {
+  const element = evt.target.closest('.profile__add').querySelector('.element__title').textContent;
+  renderItem(element);
+}
+
+// кнопка лайк
+function elementLike(like) {
+  like.target.classList.toggle('element__like_active');
 }
 
 // открытие окна popup
