@@ -69,10 +69,14 @@ function renderItem(element) {
   elementAdd.querySelector('.element__title').textContent = element.name;
   elementAdd.querySelector('.element__image').src = element.link;
   elementAdd.querySelector('.element__like').addEventListener('click', elementLike);
+  // elementAdd.querySelector('.element__image').addEventListener('click', () => {
+  //   imageFull(element)
+  // });
   setEventListeners(elementAdd);
 
   list.appendChild(elementAdd);
 }
+
 renderItems();
 
 // удаление карточки
@@ -94,6 +98,27 @@ function handleDuplicate(evt) {
 function elementLike(like) {
   like.target.classList.toggle('element__like_active');
 }
+
+// // картинка в попап
+// function imageFull(element) {
+//   openPopup(popupImageFull)
+//   popupImageFull.querySelector('.popup__image').setAttribute('alt', element.name);
+//   popupImageFull.querySelector('.popup__image').setAttribute('src', element.link);
+//   popupImageFull.querySelector('.popup__image-name').textContent = element.name;
+//
+// }
+
+const popupTemplate = document.querySelector('.popup__template').content;
+const rootList = document.querySelector('.root');
+
+function renderPopup(popup) {
+  const htmlElement = popupTemplate.cloneNode(true);
+  htmlElement.querySelector('.popup__title').textContent = 'Редактирование профиля';
+  rootList.append(hlmlElement);
+
+}
+
+renderPopup();
 
 // открытие окна popup
 function openPopup() {
