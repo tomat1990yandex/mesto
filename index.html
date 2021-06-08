@@ -29,86 +29,36 @@
     </section>
 
     <section class="elements">
-      <!--      <article class="element">-->
-      <!--        <button type="button" class="element__delete" aria-label="Кнопка удаления карточки"></button>-->
-      <!--        <img class="element__image" src="./images/ekb.png" alt="Екатеринбург">-->
-      <!--        <div class="element__group">-->
-      <!--          <h2 class="element__title">Екатеринбург</h2>-->
-      <!--          <button type="button" class="element__like" aria-label="Кнопка мне нравится"></button>-->
-      <!--        </div>-->
-      <!--      </article>-->
-
-      <!--      <article class="element">-->
-      <!--        <img class="element__image" src="./images/ufa.png" alt="Уфа">-->
-      <!--        <div class="element__group">-->
-      <!--          <h2 class="element__title">Уфа</h2>-->
-      <!--          <button type="button" class="element__like" aria-label="Кнопка мне нравится"></button>-->
-      <!--        </div>-->
-      <!--      </article>-->
-
-      <!--      <article class="element">-->
-      <!--        <img class="element__image" src="./images/sochi.png" alt="Сочи">-->
-      <!--        <div class="element__group">-->
-      <!--          <h2 class="element__title">Сочи</h2>-->
-      <!--          <button type="button" class="element__like" aria-label="Кнопка мне нравится"></button>-->
-      <!--        </div>-->
-      <!--      </article>-->
-
-      <!--      <article class="element">-->
-      <!--        <img class="element__image" src="./images/moscow.png" alt="Москва">-->
-      <!--        <div class="element__group">-->
-      <!--          <h2 class="element__title">Москва</h2>-->
-      <!--          <button type="button" class="element__like" aria-label="Кнопка мне нравится"></button>-->
-      <!--        </div>-->
-      <!--      </article>-->
-
-      <!--      <article class="element">-->
-      <!--        <img class="element__image" src="./images/irkutsk.png" alt="Иркутск">-->
-      <!--        <div class="element__group">-->
-      <!--          <h2 class="element__title">Иркутск</h2>-->
-      <!--          <button type="button" class="element__like" aria-label="Кнопка мне нравится"></button>-->
-      <!--        </div>-->
-      <!--      </article>-->
-
-      <!--      <article class="element">-->
-      <!--        <img class="element__image" src="./images/kazan.png" alt="Казань">-->
-      <!--        <div class="element__group">-->
-      <!--          <h2 class="element__title">Казань</h2>-->
-      <!--          <button type="button" class="element__like" aria-label="Кнопка мне нравится"></button>-->
-      <!--        </div>-->
-      <!--      </article>-->
     </section>
   </main>
 
   <footer class="footer">
     <p class="footer__copyright">© 2021. Дмитрий Орлов</p>
   </footer>
-
-  <!--  <div class="popup">-->
-  <!--    <div class="popup__container">-->
-  <!--      <h3 class="popup__title"></h3>-->
-  <!--      <form action="#" class="popup__form" method="post" name="profileInfoEdit">-->
-  <!--        <input type="text" class="popup__input" id="popupName" name="popup__name">-->
-  <!--        <input type="text" class="popup__input" id="popupProfession" name="popup__profession">-->
-  <!--        <button type="submit" class="popup__save" aria-label="Кнопка сохранить">Сохранить</button>-->
-  <!--      </form>-->
-  <!--      <button type="button" class="popup__close" id="ButtonClose" aria-label="Кнопка закрыть"></button>-->
-  <!--    </div>-->
-</div>
-</div>
-<template class="popup__template">
-  <div class="popup">
+  <div class="popup" id="popupAdd">
     <div class="popup__container">
-      <h3 class="popup__title"></h3>
-      <form action="#" class="popup__form" method="post" name="profileInfoEdit">
-        <input type="text" class="popup__input" id="popupName" name="popup__name">
-        <input type="text" class="popup__input" id="popupProfession" name="popup__profession">
-        <button type="submit" class="popup__save" aria-label="Кнопка сохранить">Сохранить</button>
+      <h3 class="popup__title">Новое место</h3>
+      <form action="#" class="popup__form" id="popupFormAdd" method="post" name="profileInfoEdit">
+        <input type="text" class="popup__input" id="popupNameAdd" placeholder="Название">
+        <input type="text" class="popup__input" id="popupLinkAdd" placeholder="Ссылка на картинку">
+        <button type="button" class="popup__save" id="popupSaveAdd" aria-label="Кнопка сохранить">Создать</button>
       </form>
-      <button type="button" class="popup__close" id="ButtonClose" aria-label="Кнопка закрыть"></button>
+      <button type="button" class="popup__close" id="ButtonCloseAdd" aria-label="Кнопка закрыть"></button>
     </div>
   </div>
-</template>
+  <div class="popup" id="popupEdit">
+    <div class="popup__container">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form action="#" class="popup__form" id="popupFormEdit" method="post" name="profileInfoEdit">
+        <input type="text" class="popup__input" id="popupName" name="popup__name">
+        <input type="text" class="popup__input" id="popupProfession" name="popup__profession">
+        <button type="submit" class="popup__save" id="popupSaveEdit" aria-label="Кнопка сохранить">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close" id="ButtonCloseEdit" aria-label="Кнопка закрыть"></button>
+    </div>
+  </div>
+</div>
+
 <template class="element__template">
   <article class="element">
     <button type="button" class="element__delete" aria-label="Кнопка удаления карточки"></button>
