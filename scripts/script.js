@@ -31,11 +31,17 @@ const popupEditBtn = document.querySelector('#popupEdit');
 // окно popup добавления карточки
 const popupAddBtn = document.querySelector('#popupAdd');
 
+// окно popup увеличения карточки
+const popupImgBtn = document.querySelector('#popupImg');
+
 // кнопка вызова окна редактирования профиля
 const buttonPopupEdit = document.querySelector('.profile__edit');
 
 // кнопка вызова окна добавления карточки
 const buttonPopupAdd = document.querySelector('.profile__add');
+
+// изображение карточки
+let buttonImg = document.querySelector('.element__image');
 
 // кнопка закрытие окна редактирования профиля
 const buttonCloseEdit = document.querySelector('#ButtonCloseEdit');
@@ -51,37 +57,52 @@ const profileProfession = document.querySelector('.profile__profession');
 
 // поле ввода имени
 const popupName = document.querySelector('#popupName');
+const popupImage = document.querySelector('#popupImg'); // POPUP
+const imagePopupImage = popupImage.querySelector('#popupImgLink'); // IMAGE
+const buttonClosePopupImage = popupImage.querySelector('#ButtonCloseImg'); // BUTTON close pop-up
+const captionPopupImage = popupImage.querySelector('#popupImgTitle'); //CAPTION
 
+// перенос имени и профессии с popup в основную страницу
+// сброс значений в полях ввода окна добавления карточки
+// закрытие окна popup для редактирования профиля
+// закрытие окна popup для редактирования профиля
+// перенос имени и профессии с основной страницы в popup
+// открытие окна popup через нажатие на карточку
+// открытие окна popup через кнопку добавления карточки
+// открытие окна popup через кнопку редактирования профиля
+// кнопка лайк
+// удаление карточки
+// создание новой карточки через кнопку создать
+// функция создания карточек по шаблону с использованием значений массива или создания новых карточек
+// применение массива для каждого значения функции
+// элемент списка
+// элемент шаблона
+// кнопка отправки формы добавления
+// поле ввода ссылки на картинку
+// поле ввода названия картинки
+// блок формы
 // поле ввода профессии
+
 const popupProfession = document.querySelector('#popupProfession');
 
-// блок формы
-const form = document.querySelector('#popupFormEdit');
+const formEdit = document.querySelector('#popupFormEdit');
 
-// блок формы
-const formAdd = document.querySelector('#popupFormAdd');
-
-// поле ввода названия картинки
 const popupNameAdd = document.querySelector('#popupNameAdd');
 
-// поле ввода ссылки на картинку
 const popupLinkAdd = document.querySelector('#popupLinkAdd');
 
-// кнопка отправки формы добавления
 const popupSaveAdd = document.querySelector('#popupSaveAdd');
 
-// элемент шаблона
 const itemTemplate = document.querySelector('.element__template').content;
 
-// элемент списка
 const list = document.querySelector('.elements');
-
-// применение массива для каждого значения функции
 function renderItems() {
   initialCards.forEach(renderItem);
+
 }
 
-// функция создания карточек по шаблону с использованием значений массива или создания новых карточек
+
+
 function renderItem(element) {
   let elementTextContent;
   let imageSrc;
@@ -94,107 +115,101 @@ function renderItem(element) {
   }
   const elementTmplt = itemTemplate.cloneNode(true);
   elementTmplt.querySelector('.element__title').textContent = elementTextContent;
-  elementTmplt.querySelector('.element__image').src = imageSrc;
-  elementTmplt.querySelector('.element__like').addEventListener('click', elementLike);
-  // elementAdd.querySelector('.element__image').addEventListener('click', () => {
-  //   imageFull(element)
-  // });
-  setEventListeners(elementTmplt);
 
-  list.appendChild(elementTmplt);
+  elementTmplt.querySelector('.element__image').src = imageSrc;
+
+  setEventListeners(elementTmplt);
+  list.prepend(elementTmplt);
+
 }
 
 renderItems();
-
-function handleSubmit() {
+function handleSubmit(add) {
+  add.preventDefault();
   renderItem();
+  closeAdd();
+
 }
-
-// // клонируем содержимое тега template
-// const userElement = userTemplate.querySelector('.user').cloneNode(true);
-//
-// // наполняем содержимым
-// userElement.querySelector('.user__avatar').src = 'tinyurl.com/v4pfzwy';
-// userElement.querySelector('.user__name').textContent = 'Дюк Корморант';
-//
-// // отображаем на странице
-// usersOnline.append(userElement);
-
-// удаление карточки
 function handleDelete(evt) {
   evt.target.closest('.element').remove();
-}
 
+}
 function setEventListeners(element) {
   element.querySelector('.element__delete').addEventListener('click', handleDelete);
-}
+  element.querySelector('.element__like').addEventListener('click', handleLike);
+  element.querySelector('.element__image').addEventListener('click', handleImage);
 
-// кнопка лайк
-function elementLike(like) {
+}
+function handleLike(like) {
   like.target.classList.toggle('element__like_active');
+
 }
-
-// // картинка в попап
-// function imageFull(element) {
-//   openPopup(popupImageFull)
-//   popupImageFull.querySelector('.popup__image').setAttribute('alt', element.name);
-//   popupImageFull.querySelector('.popup__image').setAttribute('src', element.link);
-//   popupImageFull.querySelector('.popup__image-name').textContent = element.name;
-//
-// }
-
-// const popupTemplate = document.querySelector('.popup__template').content;
-// const rootList = document.querySelector('.root');
-
-// function renderPopup(popup) {
-//   const htmlElement = popupTemplate.cloneNode(true);
-//   htmlElement.querySelector('.popup__title').textContent = 'Редактирование профиля';
-//   rootList.append(hlmlElement);
-//
-// }
-
-// renderPopup();
-
-// открытие окна popup через кнопку редактирования профиля
 function openPopupEdit() {
   fillinProfile();
   popupEditBtn.classList.add('popup_opened');
-}
 
-// открытие окна popup через кнопку добавления карточки
+}
 function openPopupAdd() {
+  resetAddForm();
   popupAddBtn.classList.add('popup_opened');
-}
 
-// перенос имени и профессии с основной страницы в popup
+}
+function openPopupImg() {
+  popupImage.classList.add('popup_opened');
+
+}
 function fillinProfile() {
   popupName.value = profileName.textContent;
   popupProfession.value = profileProfession.textContent;
+
 }
 
-// закрытие окна popup для редактирования профиля
 function closeEdit() {
   popupEditBtn.classList.remove('popup_opened');
+
 }
 
-// закрытие окна popup для редактирования профиля
 function closeAdd() {
   popupAddBtn.classList.remove('popup_opened');
+
 }
 
-// перенос имени и профессии с popup в основную страницу
+function closeImg() {
+  popupImage.classList.remove('popup_opened');
+
+}
+
+
+function resetAddForm() {
+  popupNameAdd.value = null;
+  popupLinkAdd.value = null;
+
+}
 function formSubmitHandler(save) {
   save.preventDefault();
   profileName.textContent = popupName.value;
   profileProfession.textContent = popupProfession.value;
   closeEdit();
+
 }
+function handleImage(evt) {
+  imagePopupImage.src  = evt.target.closest('.element__image').src;
+  console.log(imagePopupImage.src);
+  imagePopupImage.alt = evt.target.closest('.element__image').alt;
+  captionPopupImage.textContent = evt.target.closest('.element').querySelector('.element__title').textContent;
+  openPopupImg(popupImage);
+
+}
+
+buttonClosePopupImage.addEventListener('click', ()=> closeImg(popupImage));
+
 
 // события при действиях
 buttonPopupEdit.addEventListener('click', openPopupEdit);
 buttonPopupAdd.addEventListener('click', openPopupAdd);
+// buttonClosePopupImage.addEventListener('click', openPopupImg);
 buttonCloseEdit.addEventListener('click', closeEdit);
 buttonCloseAdd.addEventListener('click', closeAdd);
-form.addEventListener('submit', formSubmitHandler);
+formEdit.addEventListener('submit', formSubmitHandler);
 popupSaveAdd.addEventListener('click', handleSubmit)
 

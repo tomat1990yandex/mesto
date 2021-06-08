@@ -35,13 +35,22 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021. Дмитрий Орлов</p>
   </footer>
+
+  <div class="popup" id="popupImg">
+    <div class="popup__image-container">
+      <button type="button" class="popup__close" id="ButtonCloseImg" aria-label="Кнопка закрыть"></button>
+      <img class="popup__image" src="" alt="" id="popupImgLink">
+      <h3 class="popup__image-title" id="popupImgTitle"></h3>
+    </div>
+  </div>
   <div class="popup" id="popupAdd">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
       <form action="#" class="popup__form" id="popupFormAdd" method="post" name="profileInfoEdit">
-        <input type="text" class="popup__input" id="popupNameAdd" placeholder="Название">
-        <input type="text" class="popup__input" id="popupLinkAdd" placeholder="Ссылка на картинку">
-        <button type="button" class="popup__save" id="popupSaveAdd" aria-label="Кнопка сохранить">Создать</button>
+        <input type="text" class="popup__input" id="popupNameAdd" placeholder="Название" required>
+        <input type="url" class="popup__input" id="popupLinkAdd" placeholder="Ссылка на картинку" required>
+        <button type="submit" class="popup__save" id="popupSaveAdd" aria-label="Кнопка создать
+">Создать</button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseAdd" aria-label="Кнопка закрыть"></button>
     </div>
@@ -69,6 +78,7 @@
     </div>
   </article>
 </template>
+
 <script src="scripts/script.js"></script>
 </body>
 </html>

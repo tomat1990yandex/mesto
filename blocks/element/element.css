@@ -4,4 +4,7 @@
   border-radius: 10px;
   background-color: #fff;
   position: relative;
+  max-height: 360px;
 }
+
+
