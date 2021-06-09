@@ -1,3 +1,4 @@
+// Переменные
 // стартовый массив из 6 карточек
 const initialCards = [
   {
@@ -68,8 +69,11 @@ const popupImageTitle = popupImage.querySelector('#popupImgTitle');
 // поле ввода профессии
 const popupProfession = document.querySelector('#popupProfession');
 
-// блок формы
+// блок формы редактирования
 const formEdit = document.querySelector('#popupFormEdit');
+
+// блок формы добавления
+const formAdd = document.querySelector('#popupFormAdd');
 
 // поле ввода названия карточки
 const popupNameAdd = document.querySelector('#popupNameAdd');
@@ -77,52 +81,42 @@ const popupNameAdd = document.querySelector('#popupNameAdd');
 // поле ввода ссылки на картинку
 const popupLinkAdd = document.querySelector('#popupLinkAdd');
 
-// кнопка создания карточки
-const popupSaveAdd = document.querySelector('#popupSaveAdd');
-
 // блок шаблона
 const itemTemplate = document.querySelector('.element__template').content;
 
 // список для вставки шаблона
 const list = document.querySelector('.elements');
 
-
+// Функции
 // применение массива для каждого значения функции
 function renderItems() {
-  initialCards.forEach(renderItem);
-
-}
-
-// функция создания карточек по шаблону с использованием значений массива или создания новых карточек
-function renderItem(element) {
-  let elementTextContent;
-  let imageSrc;
-  if (element) {
-    elementTextContent = element.name;
-    imageSrc = element.link;
-  } else {
-    elementTextContent = popupNameAdd.value;
-    imageSrc = popupLinkAdd.value;
-  }
-  const elementTmplt = itemTemplate.cloneNode(true);
-  elementTmplt.querySelector('.element__title').textContent = elementTextContent;
-  elementTmplt.querySelector('.element__image').alt = elementTextContent;
-
-  elementTmplt.querySelector('.element__image').src = imageSrc;
-
-  setEventListeners(elementTmplt);
-  list.prepend(elementTmplt);
-
+  initialCards.forEach((renderItem)=> list.appendChild(createElement(renderItem.link, renderItem.name)));
 }
 
 renderItems();
 
-// создание новой карточки через кнопку создать
-function handleSubmit(add) {
-  add.preventDefault();
-  renderItem();
-  closeAdd();
+// функция создания карточек
+function createElement(imageSrc, elementTextContent) {
+  const elementTmplt = itemTemplate.cloneNode(true);
+  const elementImg = elementTmplt.querySelector('.element__image')
+  const elementTitle = elementTmplt.querySelector('.element__title');
+  elementTitle.textContent = elementTextContent;
+  elementImg.alt = elementTextContent;
+  elementImg.src = imageSrc;
+  setEventListeners(elementTmplt);
+  return elementTmplt;
+}
 
+// функция добавления карточек в начало списка
+function addElement (formAdd, element) {
+  formAdd.prepend(element);
+}
+
+// функция создания карточек через форму добавления
+function handleSubmit(evt) {
+  evt.preventDefault();
+  addElement(list, createElement(popupLinkAdd.value, popupNameAdd.value));
+  closeAdd();
 }
 
 // удаление карточки
@@ -145,24 +139,26 @@ function handleLike(like) {
 
 }
 
+// открытие попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
 // открытие окна popup через кнопку редактирования профиля
 function openPopupEdit() {
   fillinProfile();
-  popupEditBtn.classList.add('popup_opened');
-
+  openPopup(popupEditBtn);
 }
 
 // открытие окна popup через кнопку добавления карточки
 function openPopupAdd() {
   resetAddForm();
-  popupAddBtn.classList.add('popup_opened');
-
+  openPopup(popupAddBtn);
 }
 
 // открытие окна popup через нажатие на карточку
 function openPopupImg() {
-  popupImage.classList.add('popup_opened');
-
+  openPopup(popupImage);
 }
 
 // перенос имени и профессии с основной страницы в popup
@@ -172,34 +168,37 @@ function fillinProfile() {
 
 }
 
+// закрытие попапа
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+
+}
+
 // закрытие окна popup для редактирования профиля
 function closeEdit() {
-  popupEditBtn.classList.remove('popup_opened');
-
+  closePopup(popupEditBtn);
 }
 
 // закрытие окна popup для добавления карточки
 function closeAdd() {
-  popupAddBtn.classList.remove('popup_opened');
-
+  closePopup(popupAddBtn);
 }
 
 // закрытие окна popup увеличения картинки
 function closeImg() {
-  popupImage.classList.remove('popup_opened');
+  closePopup(popupImage);
 
 }
 
 // сброс значений в полях ввода окна добавления карточки
 function resetAddForm() {
-  popupNameAdd.value = null;
-  popupLinkAdd.value = null;
+  formAdd.reset();
 
 }
 
 // перенос имени и профессии с popup в основную страницу
-function formSubmitHandler(save) {
-  save.preventDefault();
+function formSubmitHandler(evt) {
+  evt.preventDefault();
   profileName.textContent = popupName.value;
   profileProfession.textContent = popupProfession.value;
   closeEdit();
@@ -209,7 +208,6 @@ function formSubmitHandler(save) {
 // функция увеличения картинки
 function handleImage(evt) {
   popupImgLink.src = evt.target.closest('.element__image').src;
-  // console.log(imagePopupImage.src);
   popupImgLink.alt = evt.target.closest('.element__image').alt;
   popupImageTitle.textContent = evt.target.closest('.element').querySelector('.element__title').textContent;
   openPopupImg(popupImage);
@@ -219,12 +217,12 @@ function handleImage(evt) {
 // закрытие увеличенного изображения с кнопки
 buttonClosePopupImage.addEventListener('click', () => closeImg(popupImage));
 
-
+// События
 // события при действиях
 buttonPopupEdit.addEventListener('click', openPopupEdit);
 buttonPopupAdd.addEventListener('click', openPopupAdd);
 buttonCloseEdit.addEventListener('click', closeEdit);
 buttonCloseAdd.addEventListener('click', closeAdd);
 formEdit.addEventListener('submit', formSubmitHandler);
-popupSaveAdd.addEventListener('click', handleSubmit)
+formAdd.addEventListener('submit', handleSubmit)
 
