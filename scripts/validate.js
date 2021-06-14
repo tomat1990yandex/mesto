@@ -3,17 +3,15 @@ function enableValidation(element) {
   formList.forEach((form) => {
     form.addEventListener('input', (evt) => handleFormInput(evt));
   })
-
 }
 
 function handleFormInput(evt) {
   const input = evt.target;
-
   const form = evt.currentTarget;
+
   setCustomError(input);
   setFieldError(input);
   setSubmitButtonState(form);
-
 }
 
 function setCustomError(input) {
@@ -35,13 +33,6 @@ function setCustomError(input) {
 
 }
 
-function setFieldError(input) {
-  const span = document.querySelector(`#${input.id}Err`);
-  span.textContent = input.validationMessage;
-
-
-}
-
 function setSubmitButtonState(form) {
   const button = Array.from(document.querySelectorAll('.popup__save'));
 
@@ -57,6 +48,12 @@ function setSubmitButtonState(form) {
     }
   })
 }
+
+function setFieldError(input) {
+  const span = document.querySelector(`#${input.id}Err`);
+  span.textContent = input.validationMessage;
+}
+
 
 enableValidation({
   formSelector: '.popup__form',
