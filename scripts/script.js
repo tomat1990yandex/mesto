@@ -39,6 +39,8 @@ const buttonPopupEdit = document.querySelector('.profile__edit');
 // кнопка вызова окна добавления карточки
 const buttonPopupAdd = document.querySelector('.profile__add');
 
+const popupOpened = document.querySelector('.popup_opened');
+
 // кнопка закрытие окна редактирования профиля
 const buttonCloseEdit = document.querySelector('#ButtonCloseEdit');
 
@@ -136,12 +138,20 @@ function setEventListeners(element) {
 // кнопка лайк
 function handleLike(like) {
   like.target.classList.toggle('element__like_active');
-
 }
 
 // открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeBtnEsc);
+}
+
+// закрытие попапа по нажатию кнопки Escape
+function closeBtnEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
 // открытие окна popup через кнопку редактирования профиля
@@ -171,7 +181,7 @@ function fillinProfile() {
 // закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-
+  document.removeEventListener('keydown', closeBtnEsc);
 }
 
 // закрытие окна popup для редактирования профиля
@@ -217,6 +227,24 @@ function handleImage(evt) {
 // закрытие увеличенного изображения с кнопки
 buttonClosePopupImage.addEventListener('click', () => closeImg(popupImage));
 
+// закрытие попапа редактирования при клике на пустую область
+popupEditBtn.addEventListener('click', (evt) => {
+  if (evt.currentTarget === evt.target)
+    closePopup(popupEditBtn);
+});
+
+// закрытие попапа добавления при клике на пустую область
+popupAddBtn.addEventListener('click', (evt) => {
+  if (evt.currentTarget === evt.target)
+    closePopup(popupAddBtn);
+});
+
+// закрытие попапа изображения при клике на пустую область
+popupImage.addEventListener('click', (evt) => {
+  if (evt.currentTarget === evt.target)
+    closePopup(popupImage);
+});
+
 // События
 // события при действиях
 buttonPopupEdit.addEventListener('click', openPopupEdit);
@@ -224,5 +252,4 @@ buttonPopupAdd.addEventListener('click', openPopupAdd);
 buttonCloseEdit.addEventListener('click', closeEdit);
 buttonCloseAdd.addEventListener('click', closeAdd);
 formEdit.addEventListener('submit', formSubmitHandler);
-formAdd.addEventListener('submit', handleSubmit)
-
+formAdd.addEventListener('submit', handleSubmit);

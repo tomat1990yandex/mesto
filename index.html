@@ -47,7 +47,7 @@
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
       <form action="#" class="popup__form" id="popupFormAdd" method="post" name="profileInfoEdit">
-        <input type="text" class="popup__input" id="popupNameAdd" placeholder="Название" required>
+        <input type="text" class="popup__input" id="popupNameAdd" placeholder="Название" minlength="2" maxlength="30" required>
         <input type="url" class="popup__input" id="popupLinkAdd" placeholder="Ссылка на картинку" required>
         <button type="submit" class="popup__save" id="popupSaveAdd" aria-label="Кнопка создать">Создать</button>
       </form>
@@ -58,8 +58,8 @@
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
       <form action="#" class="popup__form" id="popupFormEdit" method="post" name="profileInfoEdit">
-        <input type="text" class="popup__input" id="popupName" name="popup__name" placeholder="Имя">
-        <input type="text" class="popup__input" id="popupProfession" name="popup__profession" placeholder="Профессия">
+        <input type="text" class="popup__input" id="popupName" name="popup__name" minlength="2" maxlength="40" placeholder="Имя" required>
+        <input type="text" class="popup__input" id="popupProfession" name="popup__profession" minlength="2" maxlength="200" placeholder="Профессия" required>
         <button type="submit" class="popup__save" id="popupSaveEdit" aria-label="Кнопка сохранить">Сохранить</button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseEdit" aria-label="Кнопка закрыть"></button>
