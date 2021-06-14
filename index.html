@@ -46,10 +46,12 @@
   <div class="popup" id="popupAdd">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form action="#" class="popup__form" id="popupFormAdd" method="post" name="profileInfoEdit">
+      <form action="#" class="popup__form" id="popupFormAdd" method="post" name="profileInfoEdit" novalidate>
         <input type="text" class="popup__input" id="popupNameAdd" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="popup__field-error" id="popupNameAddErr"></span>
         <input type="url" class="popup__input" id="popupLinkAdd" placeholder="Ссылка на картинку" required>
-        <button type="submit" class="popup__save" id="popupSaveAdd" aria-label="Кнопка создать">Создать</button>
+        <span class="popup__field-error" id="popupLinkAddErr"></span>
+        <button type="submit" class="popup__save popup__save_inactive" id="popupSaveAdd" aria-label="Кнопка создать" disabled>Создать</button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseAdd" aria-label="Кнопка закрыть"></button>
     </div>
@@ -57,10 +59,12 @@
   <div class="popup" id="popupEdit">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form action="#" class="popup__form" id="popupFormEdit" method="post" name="profileInfoEdit">
+      <form action="#" class="popup__form" id="popupFormEdit" method="post" name="profileInfoEdit" novalidate>
         <input type="text" class="popup__input" id="popupName" name="popup__name" minlength="2" maxlength="40" placeholder="Имя" required>
+        <span class="popup__field-error" id="popupNameErr"></span>
         <input type="text" class="popup__input" id="popupProfession" name="popup__profession" minlength="2" maxlength="200" placeholder="Профессия" required>
-        <button type="submit" class="popup__save" id="popupSaveEdit" aria-label="Кнопка сохранить">Сохранить</button>
+        <span class="popup__field-error" id="popupProfessionErr"></span>
+        <button type="submit" class="popup__save popup__save_inactive" id="popupSaveEdit" aria-label="Кнопка сохранить" disabled>Сохранить</button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseEdit" aria-label="Кнопка закрыть"></button>
     </div>
@@ -79,5 +83,6 @@
 </template>
 
 <script src="scripts/script.js"></script>
+<script src="scripts/validate.js"></script>
 </body>
 </html>
