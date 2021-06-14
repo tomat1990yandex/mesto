@@ -1,20 +1,9 @@
-function enableValidation() {
-  const form = document.querySelector('#popupFormAdd');
-  form.addEventListener('submit', handleFormSubmit);
-  form.addEventListener('input', handleFormInput);
+function enableValidation(element) {
+  const formList = Array.from(document.querySelectorAll(element.formSelector));
+  formList.forEach((form) => {
+    form.addEventListener('input', (evt) => handleFormInput(evt));
+  })
 }
-
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-
-  const form = evt.currentTarget;
-  const isValid = form.checkValidity();
-
-  if (isValid) {
-    form.reset();
-  }
-}
-
 
 function handleFormInput(evt) {
   const input = evt.target;
@@ -30,8 +19,7 @@ function setCustomError(input) {
 
   input.setCustomValidity('');
   if (input.value.length === 0) {
-    input.setCustomValidity(`Вы пропустили это поле.`
-    );
+    input.setCustomValidity(`Вы пропустили это поле.`);
   } else {
     if (validity.tooShort || validity.tooLong) {
       const currentLength = input.value.length;
@@ -51,23 +39,26 @@ function setFieldError(input) {
 }
 
 function setSubmitButtonState(form) {
-  const button = form.querySelector('#popupSaveAdd');
-  const isValid = form.checkValidity();
+  const button = Array.from(document.querySelectorAll('.popup__save'));
+  button.forEach((button) => {
 
-  if (isValid) {
-    button.classList.remove('popup__save_inactive');
-    button.removeAttribute('disabled');
-  } else {
-    button.classList.add('popup__save_inactive');
-    button.setAttribute('disabled', 'disabled');
+      const isValid = form.checkValidity();
+
+      if (isValid) {
+        button.classList.remove('popup__save_inactive');
+        button.removeAttribute('disabled');
+      } else {
+        button.classList.add('popup__save_inactive');
+        button.setAttribute('disabled', 'disabled');
+      }
+    })
   }
-}
 
-enableValidation({
-  form: '.popup__form',
-  input: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__save_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
+  enableValidation({
+    formSelector: '.popup__form',
+    input: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });
