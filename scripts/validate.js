@@ -1,65 +1,120 @@
-function enableValidation(element) {
-  const formList = Array.from(document.querySelectorAll(element.formSelector));
-  formList.forEach((form) => {
-    form.addEventListener('input', (evt) => handleFormInput(evt));
-  })
-}
+const enableValidation = (e) => {
+  const formList = Array.from(document.querySelectorAll(e.formSel));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
 
-function handleFormInput(evt) {
-  const input = evt.target;
-  const form = evt.currentTarget;
+    setEventListeners(formElement, e);
+  });
+};
 
-  setCustomError(input);
-  setFieldError(input);
-  setSubmitButtonState(form);
-}
+const setEventListeners = (formElement, e) => {
+  const inputList = Array.from(formElement.querySelectorAll(e.inputSel));
+  const buttonElement = formElement.querySelector(e.submitButtonSel);
 
-function setCustomError(input) {
-  const validity = input.validity;
-  input.setCustomValidity('');
-  if (input.value.length === 0) {
-    input.setCustomValidity(`Вы пропустили это поле.`);
+  toggleButtonState(inputList, buttonElement);
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      isValid(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+};
+
+const toggleButtonState = (inputList, buttonElement, e) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(e.inactiveButtonClass);
   } else {
-    if (validity.tooShort || validity.tooLong) {
-      const currentLength = input.value.length;
-      const min = input.getAttribute('minlength');
-      input.setCustomValidity(`Текст должен быть не короче ${min} симв. Длина текста сейчас: ${currentLength} символ.`
-      );
-    }
-    if (validity.typeMismatch) {
-      input.setCustomValidity('Введите адрес сайта.');
-    }
+    buttonElement.classList.remove(e.inactiveButtonClass);
   }
+};
 
-}
+const isValid = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
 
-function setSubmitButtonState(form) {
-  const button = Array.from(document.querySelectorAll('.popup__save'));
+const showInputError = (formElement, inputElement, errorMessage, e) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}Err`);
+  inputElement.classList.add(e.inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(e.errorClass);
+};
 
-  button.forEach((button) => {
+const hideInputError = (formElement, inputElement, e) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}Err`);
+  inputElement.classList.remove(e.inputErrorClass);
+  errorElement.classList.remove(e.errorClass);
+  errorElement.textContent = '';
+};
 
-    const isValid = form.checkValidity();
-    if (isValid) {
-      button.classList.remove('popup__save_inactive');
-      button.removeAttribute('disabled');
-    } else {
-      button.classList.add('popup__save_inactive');
-      button.setAttribute('disabled', 'disabled');
-    }
-  })
-}
-
-function setFieldError(input) {
-  const span = document.querySelector(`#${input.id}Err`);
-  span.textContent = input.validationMessage;
-}
-
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
 
 enableValidation({
-  formSelector: '.popup__form',
-  input: '.popup__input',
-  submitButtonSelector: '.popup__save',
+  formSel: '.popup__form',
+  inputSel: '.popup__input',
+  submitButtonSel: '.popup__save',
   inactiveButtonClass: 'popup__save_inactive',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__field-error_active'
 });
+
+
+// function enableValidation(element) {
+//   const formList = Array.from(document.querySelectorAll(element.formElement));
+//   formList.forEach((form) => {
+//     form.addEventListener('input', (evt) => handleFormInput(evt));
+//   })
+// }
+//
+// function handleFormInput(evt) {
+//   const input = evt.target;
+//   const form = evt.currentTarget;
+//
+//   setCustomError(input);
+//   setFieldError(input);
+//   setSubmitButtonState(form);
+// }
+//
+// function setCustomError(input) {
+//   const validity = input.validity;
+//   input.setCustomValidity('');
+//     if (validity.tooShort || validity.tooLong) {
+//       const currentLength = input.value.length;
+//       const min = input.getAttribute('minlength');
+//       input.setCustomValidity(`Текст должен быть не короче ${min} симв. Длина текста сейчас: ${currentLength} символ.`
+//       );
+//     }
+// }
+//
+// function setSubmitButtonState(form) {
+//   const button = Array.from(document.querySelectorAll('.popup__save'));
+//
+//   button.forEach((button) => {
+//
+//     const isValid = form.checkValidity();
+//     if (isValid) {
+//       button.classList.remove('popup__save_inactive');
+//       button.removeAttribute('disabled');
+//     } else {
+//       button.classList.add('popup__save_inactive');
+//       button.setAttribute('disabled', 'disabled');
+//     }
+//   })
+// }
+//
+// function setFieldError(input) {
+//   const span = document.querySelector(`#${input.id}Err`);
+//   span.textContent = input.validationMessage;
+// }
+//
+// чтобы проверять его при изменении любого из полей
