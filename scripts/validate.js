@@ -26,16 +26,6 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement, e) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(e.inactiveButtonClass);
-    buttonElement.setAttribute('disabled', 'disabled');
-  } else {
-    buttonElement.classList.remove(e.inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
-  }
-};
-
 const setEvtListeners = (formElement, e) => {
   const inputList = Array.from(formElement.querySelectorAll(e.inputSel));
   const buttonElement = formElement.querySelector(e.submitButtonSel);
@@ -50,12 +40,22 @@ const setEvtListeners = (formElement, e) => {
   });
 };
 
+const toggleButtonState = (inputList, buttonElement, e) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(e.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', 'disabled');
+  } else {
+    buttonElement.classList.remove(e.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
+  }
+};
+
 const enableValidation = (e) => {
   const formList = Array.from(document.querySelectorAll(e.formSel));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
+    // formElement.addEventListener('submit', function (evt) {
+    //   evt.preventDefault();
+    // });
 
     setEvtListeners(formElement, e);
   });
