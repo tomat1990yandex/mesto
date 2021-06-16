@@ -39,8 +39,6 @@ const buttonPopupEdit = document.querySelector('.profile__edit');
 // кнопка вызова окна добавления карточки
 const buttonPopupAdd = document.querySelector('.profile__add');
 
-const popupOpened = document.querySelector('.popup_opened');
-
 // кнопка закрытие окна редактирования профиля
 const buttonCloseEdit = document.querySelector('#ButtonCloseEdit');
 
@@ -163,7 +161,6 @@ function resetAddForm() {
   resetValidationErrors(formAdd);
 }
 
-
 // сброс ошибок валидации
 function resetValidationErrors(form) {
   const inputsList = Array.from(form.querySelectorAll('.popup__input'));
@@ -196,25 +193,24 @@ buttonClosePopupImage.addEventListener('click', () => closePopup(popupImage));
 buttonCloseEdit.addEventListener('click', () => closePopup(popupEditBtn));
 buttonCloseAdd.addEventListener('click', () => closePopup(popupAddBtn));
 
-// закрытие попапа редактирования при клике на пустую область
 
+// закрытие попапа редактирования при клике на пустую область
 popupEditBtn.addEventListener('click', (evt) => {
   if (evt.currentTarget === evt.target)
     closePopup(popupEditBtn);
 });
-// закрытие попапа добавления при клике на пустую область
 
+// закрытие попапа добавления при клике на пустую область
 popupAddBtn.addEventListener('click', (evt) => {
   if (evt.currentTarget === evt.target)
     closePopup(popupAddBtn);
 });
-// закрытие попапа изображения при клике на пустую область
 
+// закрытие попапа изображения при клике на пустую область
 popupImage.addEventListener('click', (evt) => {
   if (evt.currentTarget === evt.target)
     closePopup(popupImage);
 });
-// События
 
 buttonPopupEdit.addEventListener('click', () => {
   fillinProfile();
@@ -237,49 +233,3 @@ formAdd.addEventListener('submit', (evt) => {
   addElement(list, createElement(popupLinkAdd.value, popupNameAdd.value));
   closePopup(popupAddBtn);
 });
-
-// перенос имени и профессии с popup в основную страницу
-// function formSubmitHandler(evt) {
-//   evt.preventDefault();
-//   profileName.textContent = popupName.value;
-//   profileProfession.textContent = popupProfession.value;
-//   closePopup(popupEditBtn);
-// }
-// функция создания карточек через форму добавления
-// function handleSubmit(evt) {
-//   evt.preventDefault();
-//   addElement(list, createElement(popupLinkAdd.value, popupNameAdd.value));
-//   closePopup(popupAddBtn);
-// }
-// открытие окна popup через кнопку редактирования профиля
-// function openPopupEdit() {
-//   fillinProfile();
-//   openPopup(popupEditBtn);
-// }
-//
-// // открытие окна popup через кнопку добавления карточки
-// function openPopupAdd() {
-//   resetAddForm();
-//   openPopup(popupAddBtn);
-// }
-//
-// // открытие окна popup через нажатие на карточку
-// function openPopupImg() {
-//   openPopup(popupImage);
-// }
-
-// // закрытие окна popup для редактирования профиля
-// function closeEdit() {
-//   closePopup(popupEditBtn);
-// }
-//
-// // закрытие окна popup для добавления карточки
-// function closeAdd() {
-//   closePopup(popupAddBtn);
-// }
-//
-// // закрытие окна popup увеличения картинки
-// function closeImg() {
-//   closePopup(popupImage);
-//
-// }
