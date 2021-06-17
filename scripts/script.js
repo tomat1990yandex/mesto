@@ -131,6 +131,7 @@ function handleLike(like) {
 
 // открытие попапа
 function openPopup(popup) {
+  resetValidationErrors(formEdit);
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeBtnEsc);
 }
