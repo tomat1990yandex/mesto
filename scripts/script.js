@@ -88,29 +88,29 @@ const itemTemplate = document.querySelector('.element__template').content;
 const list = document.querySelector('.elements');
 
 // Функции
-// применение массива для каждого значения функции
-function renderItems() {
-  initialCards.forEach((renderItem) => list.appendChild(createElement(renderItem.link, renderItem.name)));
-}
+// // применение массива для каждого значения функции
+// function renderItems() {
+//   initialCards.forEach((renderItem) => list.appendChild(createElement(renderItem.link, renderItem.name)));
+// }
+//
+// renderItems();
 
-renderItems();
-
-// функция создания карточек
-function createElement(imageSrc, elementTextContent) {
-  const elementTmplt = itemTemplate.cloneNode(true);
-  const elementImg = elementTmplt.querySelector('.element__image')
-  const elementTitle = elementTmplt.querySelector('.element__title');
-  elementTitle.textContent = elementTextContent;
-  elementImg.alt = elementTextContent;
-  elementImg.src = imageSrc;
-  setEventListeners(elementTmplt);
-  return elementTmplt;
-}
-
-// функция добавления карточек в начало списка
-function addElement(formAdd, element) {
-  formAdd.prepend(element);
-}
+// // функция создания карточек
+// function createElement(imageSrc, elementTextContent) {
+//   const elementTmplt = itemTemplate.cloneNode(true);
+//   const elementImg = elementTmplt.querySelector('.element__image')
+//   const elementTitle = elementTmplt.querySelector('.element__title');
+//   elementTitle.textContent = elementTextContent;
+//   elementImg.alt = elementTextContent;
+//   elementImg.src = imageSrc;
+//   setEventListeners(elementTmplt);
+//   return elementTmplt;
+// }
+//
+// // функция добавления карточек в начало списка
+// function addElement(formAdd, element) {
+//   formAdd.prepend(element);
+// }
 
 // удаление карточки
 function handleDelete(evt) {
@@ -129,20 +129,20 @@ function handleLike(like) {
   like.target.classList.toggle('element__like_active');
 }
 
-// открытие попапа
-function openPopup(popup) {
-  resetValidationErrors(formEdit);
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeBtnEsc);
-}
+// // открытие попапа
+// function openPopup(popup) {
+//   resetValidationErrors(formEdit);
+//   popup.classList.add('popup_opened');
+//   document.addEventListener('keydown', closeBtnEsc);
+// }
 
-// закрытие попапа по нажатию кнопки Escape
-function closeBtnEsc(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}
+// // закрытие попапа по нажатию кнопки Escape
+// function closeBtnEsc(evt) {
+//   if (evt.key === 'Escape') {
+//     const openedPopup = document.querySelector('.popup_opened');
+//     closePopup(openedPopup);
+//   }
+// }
 
 // перенос имени и профессии с основной страницы в popup
 function fillinProfile() {
