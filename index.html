@@ -46,7 +46,7 @@
   <div class="popup" id="popupAdd">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form action="#" class="popup__form" id="popupFormAdd" method="post" name="profileInfoEdit" novalidate>
+      <form action="#" class="popup__form popup__form_add" id="popupFormAdd" method="post" name="profileInfoEdit" novalidate>
         <input type="text" class="popup__input" id="popupNameAdd" name="popup__name-add" minlength="2" maxlength="30" placeholder="Название" required>
         <span class="popup__field-error popup__name-add-error" id="popupNameAddErr"></span>
         <input type="url" class="popup__input" id="popupLinkAdd" name="popup__link-add" placeholder="Ссылка на картинку" required>
@@ -82,7 +82,8 @@
   </article>
 </template>
 
-<script src="scripts/Card.js"></script>
-<!--<script src="scripts/validate.js"></script>-->
+<script src="scripts/index.js" type="module"></script>
+<script src="scripts/Card.js" type="module"></script>
+<script src="scripts/FormValidator.js" type="module"></script>
 </body>
 </html>
