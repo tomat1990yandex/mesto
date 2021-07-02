@@ -57,6 +57,7 @@ const popupName = document.querySelector('#popupName');
 
 // окно popup увеличения карточки
 export const popupImage = document.querySelector('.popup__image');
+export const popupImg = document.querySelector('#popupImg');
 
 // поле ввода названия картинки
 export const popupImageTitle = document.querySelector('#popupImgTitle');
@@ -124,8 +125,13 @@ buttonCloseAdd.addEventListener("click", () => {
   closePopup(popupAddBtn);
 })
 
+popupCloseButton.addEventListener("click", () => {
+  closePopup(popupElement);
+})
+
+
 // открытие попапа
-function openPopup(popup) {
+export function openPopup(popup) {
   resetValidationErrors(formEdit);
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeBtnEsc);

@@ -1,4 +1,4 @@
-import {popupImage, popupImageTitle, popupElement, popupCloseButton} from './index.js';
+import {popupImage, popupImageTitle, popupElement, openPopup} from './index.js';
 
 class Card {
   constructor(data, cardSelector) {
@@ -22,6 +22,7 @@ class Card {
     this._setEventListeners();
 
     this._element.querySelector('.element__image').src = `${this._link}`;
+    this._element.querySelector('.element__image').alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
 
     return this._element;
@@ -30,12 +31,9 @@ class Card {
 
   _handleOpenPopup() {
     popupImage.src = this._link;
+    popupImage.alt = this._name;
     popupImageTitle.textContent = this._name;
-    popupElement.classList.add('popup_opened');
-  }
-
-  _handleClosePopup() {
-    popupElement.classList.remove('popup_opened');
+    openPopup(popupElement);
   }
 
   _handleDelete() {
@@ -49,15 +47,6 @@ class Card {
   _setEventListeners() {
     this._element.querySelector('.element__image').addEventListener('click', () => {
       this._handleOpenPopup();
-    });
-
-    popupCloseButton.addEventListener('click', () => {
-      this._handleClosePopup();
-    });
-
-    document.addEventListener('keydown', (evt) => {
-      (evt.key === 'Escape');
-      this._handleClosePopup();
     });
 
     this._element.querySelector('.element__like').addEventListener('click', () => {
