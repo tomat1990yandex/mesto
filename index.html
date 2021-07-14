@@ -46,12 +46,17 @@
   <div class="popup popup_type_add-card" id="popupAdd">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form action="#" class="popup__form popup__form_add" id="popupFormAdd" method="post" name="profileInfoAdd" novalidate>
-        <input type="text" class="popup__input" id="name" name="popup__name-add" minlength="2" maxlength="30" placeholder="Название" required>
+      <form action="#" class="popup__form popup__form_add" id="popupFormAdd" method="post" name="profileInfoAdd"
+            novalidate>
+        <input type="text" class="popup__input" id="name" name="popup__name-add" minlength="2" maxlength="30"
+               placeholder="Название" required>
         <span class="popup__field-error popup__name-add-error" id="popupNameAddErr"></span>
-        <input type="url" class="popup__input" id="link" name="popup__link-add" placeholder="Ссылка на картинку" required>
+        <input type="url" class="popup__input" id="link" name="popup__link-add" placeholder="Ссылка на картинку"
+               required>
         <span class="popup__field-error popup__link-add-error" id="popupLinkAddErr"></span>
-        <button type="submit" class="popup__save popup__save_inactive" id="popupSaveAdd" aria-label="Кнопка создать">Создать</button>
+        <button type="submit" class="popup__save popup__save_inactive" id="popupSaveAdd" aria-label="Кнопка создать">
+          Создать
+        </button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseAdd" aria-label="Кнопка закрыть"></button>
     </div>
@@ -59,12 +64,17 @@
   <div class="popup popup_type_edit" id="popupEdit">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form action="#" class="popup__form popup__form_edit" id="popupFormEdit" method="post" name="profileInfoEdit" novalidate>
-        <input type="text" class="popup__input" id="popupName" name="popup__name" minlength="2" maxlength="40" placeholder="Имя" required>
+      <form action="#" class="popup__form popup__form_edit" id="popupFormEdit" method="post" name="profileInfoEdit"
+            novalidate>
+        <input type="text" class="popup__input" id="popupName" name="popup__name" minlength="2" maxlength="40"
+               placeholder="Имя" required>
         <span class="popup__field-error popup__name-error" id="popupNameErr"></span>
-        <input type="text" class="popup__input" id="popupProfession" name="popup__profession" minlength="2" maxlength="200" placeholder="Профессия" required>
+        <input type="text" class="popup__input" id="popupProfession" name="popup__profession" minlength="2"
+               maxlength="200" placeholder="Профессия" required>
         <span class="popup__field-error popup__profession-error" id="popupProfessionErr"></span>
-        <button type="submit" class="popup__save popup__save_inactive" id="popupSaveEdit" aria-label="Кнопка сохранить">Сохранить</button>
+        <button type="submit" class="popup__save popup__save_inactive" id="popupSaveEdit" aria-label="Кнопка сохранить">
+          Сохранить
+        </button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseEdit" aria-label="Кнопка закрыть"></button>
     </div>

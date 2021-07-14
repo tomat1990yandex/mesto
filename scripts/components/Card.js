@@ -21,19 +21,19 @@ export default class Card {
     this._img = this._element.querySelector('.element__image');
     this._element.querySelector('.element__title').textContent = this._name;
     this._setEventListeners();
-    this._img.src = this._link
-    this._img.alt = this._name
+    this._img.src = this._link;
+    this._img.alt = this._name;
 
     return this._element;
-  }
+  };
 
   _handleDelete() {
     this._element.remove();
-  }
+  };
 
   _handleLike() {
     this._element.querySelector('.element__like').classList.toggle('element__like_active');
-  }
+  };
 
   _setEventListeners() {
     this._element.querySelector('.element__image').addEventListener('click', () => {
@@ -47,5 +47,5 @@ export default class Card {
     this._element.querySelector('.element__delete').addEventListener('click', () => {
       this._handleDelete();
     });
-  }
-}
+  };
+};

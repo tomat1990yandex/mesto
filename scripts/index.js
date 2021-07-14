@@ -1,32 +1,25 @@
 import Card from './components/Card.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section.js';
-import PopupWithImage from './components/PopupWithImage.js'
-import initialCards from './data.js'
-import UserInfo from './components/UserInfo.js'
-import PopupWithForm from './components/PopupWithForm.js'
+import PopupWithImage from './components/PopupWithImage.js';
+import initialCards from './data.js';
+import UserInfo from './components/UserInfo.js';
+import PopupWithForm from './components/PopupWithForm.js';
 
-// окно popup редактирования профиля
 export const popupEditBtn = document.querySelector('.profile__edit');
-
-// окно popup добавления карточки
 export const popupAddBtn = document.querySelector('.profile__add');
-
-// блок формы добавления
 const formAdd = document.querySelector('.popup__form_add');
 const formEdit = document.querySelector('.popup__form_edit');
-
-export const formEditProfile = document.forms['profileInfoEdit']
-export const nameInput = formEditProfile.elements.popup__name
-export const aboutInput = formEditProfile.elements.popup__profession
-
-export const formNewCard = document.forms['profileInfoAdd']
+export const formEditProfile = document.forms['profileInfoEdit'];
+export const nameInput = formEditProfile.elements.popup__name;
+export const aboutInput = formEditProfile.elements.popup__profession;
+export const formNewCard = document.forms['profileInfoAdd'];
 
 // сброс значений в полях ввода окна добавления карточки
 function resetAddForm(form) {
   form.reset();
   resetValidationErrors(form);
-}
+};
 
 // сброс ошибок валидации
 export function resetValidationErrors(form) {
@@ -45,11 +38,7 @@ export function resetValidationErrors(form) {
 
   btnSubmit.classList.add('popup__save_inactive');
   btnSubmit.setAttribute('disabled', 'disabled');
-}
-
-// function addElement(formAdd, element) {
-//   formAdd.prepend(element);
-// }
+};
 
 const createCard = (name, link) => {
   const card = new Card({
@@ -59,7 +48,7 @@ const createCard = (name, link) => {
     }
   }, '.element__template')
   return card.generateCard();
-}
+};
 
 const cardList = new Section({
   items: initialCards,
@@ -67,41 +56,43 @@ const cardList = new Section({
     const cardElement = createCard(data.name, data.link)
     cardList.addItem(cardElement)
   }
-}, '.elements')
-cardList.renderItems()
+}, '.elements');
 
-const popupWithImage = new PopupWithImage('.popup_type_image')
-popupWithImage.setEventListeners()
+cardList.renderItems();
 
-const userInfo = new UserInfo('.profile__name', '.profile__profession')
-const popupUserForm = new PopupWithForm('.popup_type_edit', {
-  formSubmit: (data) => {
-    userInfo.setUserInfo(data)
-  }
-})
-popupUserForm.setEventListeners();
+const popupWithImage = new PopupWithImage('.popup_type_image');
+
+popupWithImage.setEventListeners();
 
 const handlePopupEditProfile = () => {
   const userData = userInfo.getUserInfo()
-  resetAddForm(formEdit)
-  nameInput.value = userData.name
-  aboutInput.value = userData.about
-  popupUserForm.open()
-}
+  resetAddForm(formEdit);
+  nameInput.value = userData.name;
+  aboutInput.value = userData.about;
+  popupUserForm.open();
+};
+
+const userInfo = new UserInfo('.profile__name', '.profile__profession');
+const popupUserForm = new PopupWithForm('.popup_type_edit', {
+  formSubmit: (data) => {
+    userInfo.setUserInfo(data);
+  }
+});
+popupUserForm.setEventListeners();
 
 const popupCardForm = new PopupWithForm('.popup_type_add-card', {
   formSubmit: (data) => {
     const cardElement = createCard(data.name, data.link);
     cardList.addItem(cardElement);
   }
-})
+});
 
 popupCardForm.setEventListeners();
 
 const handlePopupAddCard = () => {
   resetAddForm(formAdd);
-  popupCardForm.open()
-}
+  popupCardForm.open();
+};
 
 const setValidation = {
   formSel: '.popup__form',
@@ -113,9 +104,9 @@ const setValidation = {
 };
 
 const cardFormValidator = new FormValidator(setValidation, formNewCard)
-cardFormValidator.enableValidation()
+cardFormValidator.enableValidation();
 const profileFormValidator = new FormValidator(setValidation, formEditProfile)
-profileFormValidator.enableValidation()
+profileFormValidator.enableValidation();
 
-popupAddBtn.addEventListener("click", handlePopupAddCard)
-popupEditBtn.addEventListener("click", handlePopupEditProfile)
+popupAddBtn.addEventListener("click", handlePopupAddCard);
+popupEditBtn.addEventListener("click", handlePopupEditProfile);
