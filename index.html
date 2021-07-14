@@ -36,30 +36,30 @@
     <p class="footer__copyright">© 2021. Дмитрий Орлов</p>
   </footer>
 
-  <div class="popup" id="popupImg">
+  <div class="popup popup_type_image" id="popupImg">
     <div class="popup__image-container">
       <button type="button" class="popup__close" id="ButtonCloseImg" aria-label="Кнопка закрыть"></button>
       <img class="popup__image" id="popupImgLink" src="#" alt="Фото">
       <h3 class="popup__image-title" id="popupImgTitle"></h3>
     </div>
   </div>
-  <div class="popup" id="popupAdd">
+  <div class="popup popup_type_add-card" id="popupAdd">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form action="#" class="popup__form popup__form_add" id="popupFormAdd" method="post" name="profileInfoEdit" novalidate>
-        <input type="text" class="popup__input" id="popupNameAdd" name="popup__name-add" minlength="2" maxlength="30" placeholder="Название" required>
+      <form action="#" class="popup__form popup__form_add" id="popupFormAdd" method="post" name="profileInfoAdd" novalidate>
+        <input type="text" class="popup__input" id="name" name="popup__name-add" minlength="2" maxlength="30" placeholder="Название" required>
         <span class="popup__field-error popup__name-add-error" id="popupNameAddErr"></span>
-        <input type="url" class="popup__input" id="popupLinkAdd" name="popup__link-add" placeholder="Ссылка на картинку" required>
+        <input type="url" class="popup__input" id="link" name="popup__link-add" placeholder="Ссылка на картинку" required>
         <span class="popup__field-error popup__link-add-error" id="popupLinkAddErr"></span>
         <button type="submit" class="popup__save popup__save_inactive" id="popupSaveAdd" aria-label="Кнопка создать">Создать</button>
       </form>
       <button type="button" class="popup__close" id="ButtonCloseAdd" aria-label="Кнопка закрыть"></button>
     </div>
   </div>
-  <div class="popup" id="popupEdit">
+  <div class="popup popup_type_edit" id="popupEdit">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form action="#" class="popup__form" id="popupFormEdit" method="post" name="profileInfoEdit" novalidate>
+      <form action="#" class="popup__form popup__form_edit" id="popupFormEdit" method="post" name="profileInfoEdit" novalidate>
         <input type="text" class="popup__input" id="popupName" name="popup__name" minlength="2" maxlength="40" placeholder="Имя" required>
         <span class="popup__field-error popup__name-error" id="popupNameErr"></span>
         <input type="text" class="popup__input" id="popupProfession" name="popup__profession" minlength="2" maxlength="200" placeholder="Профессия" required>
@@ -83,7 +83,7 @@
 </template>
 
 <script src="scripts/index.js" type="module"></script>
-<script src="scripts/Card.js" type="module"></script>
-<script src="scripts/FormValidator.js" type="module"></script>
+<script src="scripts/components/Card.js" type="module"></script>
+<script src="scripts/components/FormValidator.js" type="module"></script>
 </body>
 </html>
