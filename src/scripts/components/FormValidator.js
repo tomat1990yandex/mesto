@@ -6,6 +6,7 @@ export default class FormValidator {
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
+    this._errorsList = Array.from(this._formElement.querySelectorAll(data.errorField));
   }
 
   _isValid = (inputElement) => {
@@ -56,8 +57,23 @@ export default class FormValidator {
 
   };
 
+  resetValidationErrors() {
+    this._inputSel.forEach((input) => {
+      input.classList.remove('popup__input_type_error');
+    });
+
+    this._errorsList.forEach((errMsg) => {
+      errMsg.textContent = '';
+      errMsg.classList.remove('popup__field-error_active');
+    });
+
+    this._submitButtonSel.classList.add('popup__save_inactive');
+    this._submitButtonSel.setAttribute('disabled', 'disabled');
+  };
+
   enableValidation = () => {
     this.toggleButtonState();
     this._setEvtListeners();
   };
 };
+
