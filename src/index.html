@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Дмитрий Орлов">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto Russia</title>
 </head>
 <body class="root">
@@ -16,7 +15,7 @@
   <main class="content">
     <section class="profile">
       <div class="profile__box">
-        <img class="profile__avatar" src="./images/varlamov.jpg" alt="Аватар профиля">
+        <img class="profile__avatar" src=<%=require("./images/varlamov.jpg")%> alt="Аватар профиля">
         <div class="profile__info">
           <div class="profile__box-title">
             <h1 class="profile__name">Илья Варламов</h1>
@@ -92,8 +91,5 @@
   </article>
 </template>
 
-<script src="scripts/index.js" type="module"></script>
-<script src="scripts/components/Card.js" type="module"></script>
-<script src="scripts/components/FormValidator.js" type="module"></script>
 </body>
 </html>
