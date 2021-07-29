@@ -1,0 +1,12 @@
+.profile__box-pic {
+  position: relative;
+  display: flex;
+}
+
+.profile__box-pic:hover .profile__change-btn{
+  display: block;
+}
+
+.profile__box-pic:hover .profile__avatar{
+  opacity: 0.4;
+}
