@@ -33,17 +33,6 @@ function handleTrashClick(id, card) {
   popupWithConfirm.open();
 }
 
-function handlePopupConfirm(id, card) {
-  api.deleteCard(id)
-    .then(() => {
-      card.removeCard();
-      popupWithConfirm.close();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
 function handleLikeClick(id, isLiked, card) {
   if (isLiked) {
     api.dislikedCard(id)
@@ -62,6 +51,17 @@ function handleLikeClick(id, isLiked, card) {
         console.log(err);
       });
   }
+}
+
+function handlePopupConfirm(id, card) {
+  api.deleteCard(id)
+    .then(() => {
+      card.removeCard();
+      popupWithConfirm.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 function handlePopupProfile(inputsData) {
@@ -97,7 +97,6 @@ function createCard(dataCard, id) {
     id);
 
   const newCard = card.generateCard();
-
   return newCard;
 }
 
@@ -131,6 +130,20 @@ function handlePopupChangeAvatar(inputsData) {
     })
 }
 
+const cardList = new Section({
+    renderer: (cardItem, id) => {
+      cardList.addItem(createCard(cardItem, id));
+    },
+  },
+  selectorObj.elementsSelector
+);
+
+const userInfo = new UserInfo({
+  selectorName: selectorObj.profileNameSelector,
+  selectorJob: selectorObj.profileJobSelector,
+  selectorAvatar: selectorObj.avatarSelector,
+});
+
 // слушатели событий
 editBtn.addEventListener('click', () => {
   popupFormProfile.open();
@@ -147,44 +160,30 @@ editAvaBtn.addEventListener('click', () => {
   popupFormChangeAvatar.open();
   validFormPopupAddCard.resetValidationState();
 });
-
-const cardList = new Section({
-    renderer: (cardItem, id) => {
-      cardList.addItem(createCard(cardItem, id));
-    },
-  },
-  selectorObj.elementsSelector
-);
-
 const popupWithImage = new PopupWithImage(selectorObj.popupImageSelector);
+
 popupWithImage.setEventListeners();
-
 const popupWithConfirm = new PopupWithConfirm(selectorObj.popupConfirmSelector);
+
 popupWithConfirm.setEventListeners();
-
 const popupFormProfile = new PopupWithForm(selectorObj.popupProfileSelector, handlePopupProfile);
+
 popupFormProfile.setEventListeners();
-
 const popupFormAddCard = new PopupWithForm(selectorObj.popupAddCardSelector, handlePopupAddCard);
+
 popupFormAddCard.setEventListeners();
-
 const popupFormChangeAvatar = new PopupWithForm(selectorObj.popupChangeAvatarSelector, handlePopupChangeAvatar);
+
 popupFormChangeAvatar.setEventListeners();
-
 const validFormPopupAddCard = new FormValidator(validationObj, selectorObj.popupAddCardSelector);
+
 validFormPopupAddCard.enableValidation();
-
 const validFormPopupProfile = new FormValidator(validationObj, selectorObj.popupProfileSelector);
+
 validFormPopupProfile.enableValidation();
-
 const validFormPopupChangeAvatar = new FormValidator(validationObj, selectorObj.popupChangeAvatarSelector);
-validFormPopupChangeAvatar.enableValidation();
 
-const userInfo = new UserInfo({
-  selectorName: selectorObj.profileNameSelector,
-  selectorJob: selectorObj.profileJobSelector,
-  selectorAvatar: selectorObj.avatarSelector,
-});
+validFormPopupChangeAvatar.enableValidation();
 
 Promise.all([
   api.getUserData(),
