@@ -62,7 +62,7 @@ export default class FormValidator {
   }
 
   resetValidationState() {
-    const form = this._formElement.querySelector(this._formSelector);
+    const form = this._formElement;
     const inputsArr = Array.from(form.querySelectorAll(this._inputSelector));
     const buttonElement = form.querySelector(this._submitBtnSelector);
 
